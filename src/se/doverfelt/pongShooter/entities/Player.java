@@ -33,9 +33,9 @@ public class Player extends Entity {
 
         if (playerOne) {
             if (input.isKeyDown(Input.KEY_W)) {
-                move(-1, 0, delta);
+                move(0, -1, delta);
             } else if (input.isKeyDown(Input.KEY_S)) {
-                move(1, 0, delta);
+                move(0, 1, delta);
             }
 
             if (input.isKeyPressed(Input.KEY_SPACE)) {
@@ -43,9 +43,9 @@ public class Player extends Entity {
             }
         } else {
             if (input.isKeyDown(Input.KEY_UP)) {
-                move(-1, 0, delta);
+                move(0, -1, delta);
             } else if (input.isKeyDown(Input.KEY_DOWN)) {
-                move(1, 0, delta);
+                move(0, 1, delta);
             }
 
             if (input.isKeyPressed(Input.KEY_RCONTROL)) {
