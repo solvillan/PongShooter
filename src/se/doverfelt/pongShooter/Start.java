@@ -15,6 +15,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Start extends StateBasedGame {
 
     public static int MENUID = 1;
+    public static int GAMEID = 2;
 
     public Start(String name) {
         super(name);
@@ -34,5 +35,6 @@ public class Start extends StateBasedGame {
     @Override
     public void initStatesList(GameContainer gameContainer) throws SlickException {
         addState(new WorldMenu(MENUID, gameContainer));
+        addState(new WorldGame(GAMEID, gameContainer));
     }
 }
