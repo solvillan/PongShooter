@@ -24,7 +24,7 @@ public class Start extends StateBasedGame {
     public static void main(String[] args) {
         try {
             AppGameContainer appgc = new AppGameContainer(new Start("Pong 'em up!"));
-            appgc.setDisplayMode(appgc.getScreenWidth() -100, appgc.getScreenHeight() -100, false);
+            appgc.setDisplayMode(appgc.getScreenWidth(), appgc.getScreenHeight(), true);
             appgc.setTargetFrameRate(60);
             appgc.start();
         } catch (SlickException e) {

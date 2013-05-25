@@ -2,10 +2,7 @@ package se.doverfelt.pongShooter;
 
 import it.randomtower.engine.World;
 import it.randomtower.engine.entity.Entity;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 import se.doverfelt.pongShooter.entities.Player;
 import se.doverfelt.pongShooter.entities.Projectile;
@@ -39,14 +36,22 @@ public class WorldGame extends World {
 
     @Override
     public void render(GameContainer gc, StateBasedGame stateBasedGame, Graphics g) throws SlickException{
+        g.fillRect((gc.getWidth() / 2) - 5, 0, 10, gc.getHeight());
+
         super.render(gc, stateBasedGame, g);
+
         g.drawString("FPS: " + gc.getFPS(), 10, 10);
         g.drawString("Entities: " + this.getEntities().size(), 10, 20);
+
     }
 
     @Override
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
         super.update(gc, sbg, delta);
+
+        Input input = gc.getInput();
+
+        if (input.isKeyPressed(Input.KEY_ESCAPE) && sbg.getCurrentStateID() == Start.GAMEID) System.exit(0);
 
         player1.updatePlayer(gc, delta);
         player2.updatePlayer(gc, delta);

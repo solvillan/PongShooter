@@ -21,10 +21,17 @@ public class Player extends Entity {
         this.playerOne = playerOne;
     }
 
-    public void move(float dx, float dy, int delta) {
+    public void move(float dx, float dy, int delta, GameContainer gc) {
 
         this.x = this.x + (dx * delta);
         this.y = this.y + (dy * delta);
+
+        if (this.y < 0) {
+            this.y = 0;
+        }
+        if (this.y > gc.getHeight() - 60) {
+            this.y = gc.getHeight() - 60;
+        }
 
     }
 
@@ -33,9 +40,9 @@ public class Player extends Entity {
 
         if (playerOne) {
             if (input.isKeyDown(Input.KEY_W)) {
-                move(0, -1, delta);
+                move(0, -1, delta, gc);
             } else if (input.isKeyDown(Input.KEY_S)) {
-                move(0, 1, delta);
+                move(0, 1, delta, gc);
             }
 
             if (input.isKeyPressed(Input.KEY_SPACE)) {
@@ -43,9 +50,9 @@ public class Player extends Entity {
             }
         } else {
             if (input.isKeyDown(Input.KEY_UP)) {
-                move(0, -1, delta);
+                move(0, -1, delta, gc);
             } else if (input.isKeyDown(Input.KEY_DOWN)) {
-                move(0, 1, delta);
+                move(0, 1, delta, gc);
             }
 
             if (input.isKeyPressed(Input.KEY_RCONTROL)) {
