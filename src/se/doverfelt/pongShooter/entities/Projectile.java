@@ -5,6 +5,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import se.doverfelt.pongShooter.Util;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,39 +16,28 @@ import org.newdawn.slick.SlickException;
  */
 public class Projectile extends Entity {
 
-    private float speed = 0.75f;
+    private float speed = 0.5f;
+    private boolean player1;
 
-    public Projectile(float x, float y) {
+
+    public Projectile(float x, float y, boolean player1) {
 
         super(x, y);
 
-        this.setGraphic(createImage());
+        this.player1 = player1;
+
+        this.setGraphic(Util.getProjectileImage());
 
 
-    }
-
-    private Image createImage(){
-
-        try {
-            Image opt = new Image(20, 20);
-
-            Graphics g2 = opt.getGraphics();
-
-            g2.setColor(Color.red);
-            g2.fillRect(0, 0, 20, 20);
-            g2.flush();
-
-            return opt;
-
-        } catch (SlickException e) {
-            e.printStackTrace();
-        }
-
-        return null;
     }
 
     public void move(int delta) {
-        this.x = this.x + (speed * delta);
+        if (player1) {
+            this.x = this.x + (speed * delta);
+        } else {
+            this.x = this.x - (speed * delta);
+        }
+
     }
 
 }

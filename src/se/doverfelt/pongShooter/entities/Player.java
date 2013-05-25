@@ -55,7 +55,11 @@ public class Player extends Entity {
     }
 
     private void fire() {
-        this.world.add(new Projectile(this.x, this.y));
+        if (playerOne) {
+            this.world.add(new Projectile(this.x + 40, this.y + 20, true));
+        } else {
+            this.world.add(new Projectile(this.x, this.y + 20, false));
+        }
     }
 
 }
